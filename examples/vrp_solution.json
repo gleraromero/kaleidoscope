@@ -1,0 +1,25 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "VRP Solution Example",
+  "time":7400.00,
+  "outputs":[
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst1",
+      "experiment_name": "Heuristic",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "opt": {
+          "kd_type": "vrp_solution",
+          "value": 500.123,
+          "routes": [
+            {"path":[0,1,2,3,26], "t0":0, "duration":50.00},
+            {"path":[0,4,5,6,26], "t0":10.123, "duration":300.123},
+            {"path":[0,7,8,9,26], "t0":50, "duration":150.00}
+          ]
+        }
+      }
+    }
+  ]
+}

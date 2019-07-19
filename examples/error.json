@@ -1,0 +1,28 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "Error Example",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst1",
+      "experiment_name": "Heuristic",
+      "exit_code": 1,
+      "stderr": "PREPROCESSING\nEXECUTING\nSEGFAULT",
+      "stdout": ""
+    },
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst2",
+      "experiment_name": "Heuristic",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nOK",
+      "stdout": {
+        "model1": {
+          "kd_type": "bc",
+          "time": 250.1234
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "BC Example",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst1",
+      "experiment_name": "Heuristic",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "bc",
+          "screen_output": "SOLVING BC\nNODES 1500\nFINISHED",
+          "time": 250.1234,
+          "status": "TimeLimitReached",
+          "constraint_count": 100,
+          "variable_count": 250,
+          "nodes_open": 1200,
+          "nodes_closed": 200050,
+          "root_lp_value": 123.456,
+          "root_int_solution": {"x":1, "y":2, "z":3},
+          "root_int_value": 100.123,
+          "best_bound": 450.678,
+          "best_int_solution": {"x":2, "y":1, "z":5},
+          "best_int_value": 500.00,
+          "cut_count": 15,
+          "cut_time": 50.123,
+          "cut_families": [
+            {"name": "clique", "cut_count":5, "cut_iterations":6, "cut_time":40.123},
+            {"name": "subtour", "cut_count":10, "cut_iterations":3, "cut_time":10.00}
+          ]
+        }
+      }
+    },
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst2",
+      "experiment_name": "Heuristic",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "bc",
+          "screen_output": "SOLVING BC\nNODES 1500\nFINISHED",
+          "time": 250.1234,
+          "status": "TimeLimitReached",
+          "constraint_count": 100,
+          "variable_count": 250,
+          "nodes_open": 1200,
+          "nodes_closed": 200050,
+          "root_lp_value": 123.456,
+          "root_int_solution": {"x":1, "y":2, "z":3},
+          "root_int_value": 100.123,
+          "best_bound": 450.678,
+          "best_int_solution": {"x":2, "y":1, "z":5},
+          "best_int_value": 500.00,
+          "cut_count": 15,
+          "cut_time": 50.123,
+          "cut_families": [
+            {"name": "clique", "cut_count":5, "cut_iterations":6, "cut_time":40.123},
+            {"name": "subtour", "cut_count":10, "cut_iterations":3, "cut_time":10.00}
+          ]
+        }
+      }
+    },
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst3",
+      "experiment_name": "Heuristic",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "bc",
+          "screen_output": "SOLVING BC\nNODES 1500\nFINISHED",
+          "time": 250.1234,
+          "status": "TimeLimitReached",
+          "constraint_count": 100,
+          "variable_count": 250,
+          "nodes_open": 1200,
+          "nodes_closed": 200050,
+          "root_lp_value": 123.456,
+          "root_int_solution": {"x":1, "y":2, "z":3},
+          "root_int_value": 100.123,
+          "best_bound": 450.678,
+          "best_int_solution": {"x":2, "y":1, "z":5},
+          "best_int_value": 500.00,
+          "cut_count": 15,
+          "cut_time": 50.123,
+          "cut_families": [
+            {"name": "clique", "cut_count":5, "cut_iterations":6, "cut_time":40.123},
+            {"name": "subtour", "cut_count":10, "cut_iterations":3, "cut_time":10.00}
+          ]
+        }
+      }
+    }
+  ]
+}

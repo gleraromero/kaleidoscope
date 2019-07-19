@@ -1,0 +1,86 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "BCP Example",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst1",
+      "experiment_name": "Exact",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "bcp",
+          "screen_output": "SOLVING BCP\nNODES 1500\nFINISHED",
+          "time": 250.1234,
+          "status": "TimeLimitReached",
+          "constraint_count": 100,
+          "variable_count": 250,
+          "nodes_open": 1200,
+          "nodes_closed": 200050,
+          "root_lp_value": 123.456,
+          "root_log": {
+            "kd_type": "cg",
+            "iterations": [
+              {
+                "kd_type": "mlb",
+                "iteration_name": "Heuristic",
+                "time": 250.1234,
+                "status": "Optimum",
+                "enumerated_count": 11000,
+                "extended_count": 5054,
+                "dominated_count": 4200,
+                "processed_count": 1800,
+                "count_by_length": [1, 43, 54, 656, 15],
+                "queuing_time": 20.123,
+                "enumeration_time": 10.123,
+                "extension_time": 50.123,
+                "domination_time": 30.123,
+                "process_time": 23.123,
+                "positive_domination_time": 55.0,
+                "negative_domination_time": 55.0
+              },
+              {
+                "kd_type": "mlb",
+                "iteration_name": "Exact",
+                "time": 250.1234,
+                "status": "Optimum",
+                "enumerated_count": 120000,
+                "extended_count": 50000,
+                "dominated_count": 40000,
+                "processed_count": 10000,
+                "count_by_length": [1, 20, 50, 30, 5],
+                "queuing_time": 10.123,
+                "enumeration_time": 20.123,
+                "extension_time": 30.123,
+                "domination_time": 40.123,
+                "process_time": 50.123,
+                "positive_domination_time": 10.123,
+                "negative_domination_time": 30.000
+              }
+            ]
+          },
+          "root_int_solution": {"x":1, "y":2, "z":3},
+          "root_int_value": 100.123,
+          "best_bound": 450.678,
+          "best_int_solution": {"x":2, "y":1, "z":5},
+          "best_int_value": 500.00,
+          "cut_count": 15,
+          "cut_time": 50.123,
+          "cut_families": [
+            {"name": "clique", "cut_count":5, "cut_iterations":6, "cut_time":40.123},
+            {"name": "subtour", "cut_count":10, "cut_iterations":3, "cut_time":10.00}
+          ],
+          "root_constraint_count": 120,
+          "root_variable_count": 15023,
+          "final_constraint_count": 125,
+          "final_variable_count": 16058,
+          "lp_time": 12.50,
+          "pricing_time": 500.00,
+          "branching_time": 23.123
+        }
+      }
+    }
+  ]
+}

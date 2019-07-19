@@ -1,0 +1,53 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "BLB Example",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "TSPTW1",
+      "instance_name": "Inst1",
+      "experiment_name": "Exact",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "blb",
+          "screen_output": "SOLVING BLB\nITERATIONS 1500\nFINISHED",
+          "time": 250.1234,
+          "status": "Optimum",
+          "merge_time": 100.123,
+          "forward": {
+            "kd_type": "mlb",
+            "enumerated_count": 120000,
+            "extended_count": 50000,
+            "dominated_count": 40000,
+            "processed_count": 10000,
+            "count_by_length": [1, 20, 50, 30, 5],
+            "queuing_time": 10.123,
+            "enumeration_time": 20.123,
+            "extension_time": 30.123,
+            "domination_time": 40.123,
+            "process_time": 50.123,
+            "positive_domination_time": 10.123,
+            "negative_domination_time": 30.000
+          },
+          "backward": {
+            "kd_type": "mlb",
+            "enumerated_count": 220000,
+            "extended_count": 150000,
+            "dominated_count": 140000,
+            "processed_count": 110000,
+            "count_by_length": [1, 20, 50, 80, 95, 121, 23, 5, 1],
+            "queuing_time": 15.123,
+            "enumeration_time": 25.123,
+            "extension_time": 35.123,
+            "domination_time": 45.123,
+            "process_time": 55.123,
+            "positive_domination_time": 15.123,
+            "negative_domination_time": 30.000
+          }
+        }
+      }
+    }
+  ]
+}

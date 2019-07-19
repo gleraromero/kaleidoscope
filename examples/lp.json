@@ -1,0 +1,28 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "LP Example",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst1",
+      "experiment_name": "Exact",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "lp",
+          "screen_output": "SOLVING LP\nITERATIONS 1500\nFINISHED",
+          "time": 250.1234,
+          "status": "TimeLimitReached",
+          "simplex_iterations": 1500,
+          "incumbent": {"x":1.0, "y":2.123, "z":3.56},
+          "incumbent_value": 100.123,
+          "variable_count": 3,
+          "constraint_count": 5,
+          "duals": [50.0, 60.123, 23.24, 56.0, 43.4]
+        }
+      }
+    }
+  ]
+}

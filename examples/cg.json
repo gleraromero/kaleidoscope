@@ -1,0 +1,66 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "CG Example",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "Knapsack 1",
+      "instance_name": "Inst1",
+      "experiment_name": "Exact CG",
+      "exit_code": 0,
+      "stderr": "PREPROCESSING\nEXECUTING\nSolution:500",
+      "stdout": {
+        "model1": {
+          "kd_type": "cg",
+          "screen_output": "SOLVING CG\n#iter 1\n#iter 2\n#iter 3\nFINISHED",
+          "time": 250.1234,
+          "status": "Optimum",
+          "incumbent": {"x":1, "y":2, "z":3},
+          "incumbent_value": 123.456,
+          "columns_added": 550,
+          "iteration_count": 5,
+          "pricing_time": 120.00,
+          "lp_time": 12.345,
+          "iterations": [
+            {
+              "kd_type": "mlb",
+              "iteration_name": "Heuristic",
+              "time": 250.1234,
+              "status": "Optimum",
+              "enumerated_count": 11000,
+              "extended_count": 5054,
+              "dominated_count": 4200,
+              "processed_count": 1800,
+              "count_by_length": [1, 43, 54, 656, 15],
+              "queuing_time": 20.123,
+              "enumeration_time": 10.123,
+              "extension_time": 50.123,
+              "domination_time": 30.123,
+              "process_time": 23.123,
+              "positive_domination_time": 55.0,
+              "negative_domination_time": 55.0
+            },
+            {
+              "kd_type": "mlb",
+              "iteration_name": "Exact",
+              "time": 250.1234,
+              "status": "Optimum",
+              "enumerated_count": 120000,
+              "extended_count": 50000,
+              "dominated_count": 40000,
+              "processed_count": 10000,
+              "count_by_length": [1, 20, 50, 30, 5],
+              "queuing_time": 10.123,
+              "enumeration_time": 20.123,
+              "extension_time": 30.123,
+              "domination_time": 40.123,
+              "process_time": 50.123,
+              "positive_domination_time": 10.123,
+              "negative_domination_time": 30.000
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

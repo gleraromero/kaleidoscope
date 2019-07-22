@@ -23,7 +23,16 @@ Next we show you the steps to visualize an example output file included in the r
 1. Click the *Refresh* button.
 1. Now a table with the information requested is shown. Click on the + button on an instance row to see more details about that instance. The *Detail View* will show more information.
 That's it. Now you can try to open all different example files to see the supported formats.
-    
+
+## Supported KD Types
+- [Simplex (lp)](#lp): Execution log of a simplex LP solver.
+- [Branch and Cut (bc)](#bc): Execution log of a branch and cut solver.
+- [Column Generation (cg)](#cg): Execution log of a column generation algorithm.
+- [Branch Cut and Price (bcp)](#bcp): Execution log of a Branch Cut and Price algorithm.
+- [Monodirectional Labeling (mlb)](#mlb): Execution log of a Monodirectional Labeling algorithm.
+- [Bidirectional Labeling (blb)](#blb): Execution log of a Bidirectional Labeling algorithm.
+- [VRP Solution (vrp_solution)](#vrp_solution): Solution of a VRP problem.
+
 ## Input files
 The experiment files format accepted is the one defined by the [Runner Framework](https://github.com/gleraromero/runner). It is a JSON file with the following attributes:
 - date: date when the experiment was started.

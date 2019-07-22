@@ -1,51 +1,31 @@
 # Kaleidoscope
 In every experimentation process we need to be able to quickly visualize the results in order to make progress faster.
 
-## Overview
+## Description
 The main features of Kaleidoscope are:
-- Load [Runner Framework](https://github.com/gleraromero/runner) experiment output files.
-- Establishes output JSON standard formats called KD types. It includes support for several common types (see Section **KD Types**).
-- Table View: Shows the results of the experiment output files in a table view, showing each instance as a row and each selected attribute as a column. Has a filter function integrated and a *Convert to CSV* function to convert the table to CSV to continue its analysis in other spreadsheet editors.
-- Details View: Shows further details of an experiment execution on an instance by displaying a modal with graphics and more information.
-- The **Table View** and **Details View** need to be implemented for each different KD type. Support for the most common output formats is already implemented.
+- Visualizing [Runner](https://github.com/gleraromero/runner) output files.
+- Establishes output JSON standard formats called KD types. It includes support for several common types (see [KD Types](#kd-types)).
+- Visualizing experiment results in a table where output attributes can be selected independently and a search box let you filter results in an easy way.
+- Zooming in an experiment result on an instance to see more details and graphics about that specific execution.
 
-## Requirements
-- Google Chrome Browser
+## Getting Started
+The following instructions will guide you through the steps to use Kaleidoscope to visualize your *Runner* output files.
 
-## Usage
-1. Open the index.html file with a browser.
-2. Add experiment files.
-3. Select the attributes for each experiment.
-4. Click on the + button for an experiment to see its details.
+## Prerequisites
+- Google Chrome Browser [(more info)](https://chrome.google.com/).
 
-## Architecture
-Kaleidoscope is a Javascript based project and has the following parts:
-- index.html: web page visualizer.
-- lib
-  - [bootstrap](https://getbootstrap.com)
-  - [datatables](https://datatables.net)
-  - [jquery](https://jquery.com)
-  - [plotly](https://plot.ly)
-  - [chosen](https://harvesthq.github.io/chosen/)
-- examples: folder with execution output examples to be visualized.
-- css
-  - style.css: styles of the website.
-- js
-  - utils.js: file with util functions.
-  - table_view.js: file with the table view functionality.
-  - detail_view.js: file with the detail view functionality.
-  - main.js: JS file that gets executed on load of the index.html. It initializes the web page functionality.
-  - plotter.js: Util functions for plotting graphs.
-  - kaleidoscope.js: Class that represents the system state (handles experiments added, instances, etc).
-  - grid.js: Class that uses DataTables to render a table on screen.
-  - experiment.js: Class that represents an experiment execution (on many instances).
-  - instance.js: Class that represents an instance.
-  - parsers (each KD type must have a parser here).
-    - parser.js: The base class that each parser must implement in order to be able to be used in Kaleidoscope.
-    - ...
+## Visualizing your first output file
+Next we show you the steps to visualize an example output file included in the repository [examples](examples) folder.
+1. Open the _index.html_ file on a web browser.
+1. Click on the Choose Files button and select the blb.json file on the examples directory. This file is an example output of a bidirectional labeling algorithm.
+1. Select the experiment named _Exact_ in the Experiments section.
+1. Now a row with the experiment will appear. Select some attributes to show in the table.
+1. Click the *Refresh* button.
+1. Now a table with the information requested is shown. Click on the + button on an instance row to see more details about that instance. The *Detail View* will show more information.
+That's it. Now you can try to open all different example files to see the supported formats.
     
 ## Input files
-The experiment files format accepted is the one defined by the [Runner Framework](https://github.com/gleraromero/runner). IT a JSON file with the following attributes:
+The experiment files format accepted is the one defined by the [Runner Framework](https://github.com/gleraromero/runner). It is a JSON file with the following attributes:
 - date: date when the experiment was started.
 - time: total time (secs) spent running the experiments from the experimentation file.
 - experiment_file: name of the experiment file executed.
@@ -67,13 +47,14 @@ Example:
   ]
 }
 ```
-### stdout
-The **stdout** of each execution may contain several keys and values. We consider a value for parsing if it has the __"kd_type"__ attribute. Depending on the value of that attribute is which parser will parse that specific value.
+### stdout attribute
+The **stdout** of each execution may contain several keys and values. We parse a value if it has the __"kd_type"__ attribute set. Depending on the value of that attribute we select the corresponding parser.
 
 > Note: Not all attributes need to be present. The ones that exist will be parsed.
 
 Following, we enumerate the supported types and their format:
-## lp
+## KD Types
+### lp
 The LP parser recognizes the "kd_type" == "lp". It represents the execution of an LP solver. The format of the object to be parseable is the following:
 - kd_type: "lp"
 - screen_output: string _// The output of the LP solver._
@@ -103,7 +84,7 @@ The LP parser recognizes the "kd_type" == "lp". It represents the execution of a
 ```
 
 
-# bc
+### bc
 The Branch and Cut parser recognizes the "kd_type" == "bc". It represents the execution of a Branch and Cut solver. The format of the object to be parseable is the following:
 - kd_type: "bc"
 - screen_output: string _// The output of the BC solver._
@@ -151,7 +132,7 @@ The Branch and Cut parser recognizes the "kd_type" == "bc". It represents the ex
 }
 ```
 
-## cg
+### cg
 The Column Generation parser recognizes the "kd_type" == "cg". It represents the execution of a Column generation algorithm. The attributes are the following:
 - kd_type: "cg"
 - screen_output: string _// The output of the CG solver._
@@ -197,7 +178,7 @@ The Column Generation parser recognizes the "kd_type" == "cg". It represents the
 }
 ```
 
-## bcp
+### bcp
 The Branch and Cut and Price parser recognizes the "kd_type" == "bcp". It represents the execution of a Branch and Cut and Price solver. This log type is an extension of the **bc** log type, so it contains all its attributes and also the following:
 - kd_type: "bcp"
 - root_log: json _// Object of kd_type **cg** with the column generation information of the root node._
@@ -246,7 +227,7 @@ The Branch and Cut and Price parser recognizes the "kd_type" == "bcp". It repres
 }
 ```
 
-## mlb
+### mlb
 The Monodirectional Labeling parser recognizes the "kd_type" == "mlb". It represents the execution of a monodirectional labeling algorithm. The attributes are the following:
 - kd_type: "mlb"
 - screen_output: string _// The output of the MLB solver._
@@ -287,7 +268,7 @@ The Monodirectional Labeling parser recognizes the "kd_type" == "mlb". It repres
 }
 ```
 
-## blb
+### blb
 The Bidirectional Labeling parser recognizes the "kd_type" == "blb". It represents the execution of a bidirectional labeling algorithm. The attributes are the following:
 - kd_type: "blb"
 - screen_output: string _// The output of the BLB solver._
@@ -321,10 +302,38 @@ The Bidirectional Labeling parser recognizes the "kd_type" == "blb". It represen
 }
 ```
 
-## Table View
-The main view of Kaleidoscope is a table with the selected experiments' instances as rows, and what we call experiment **attribute descriptors** as columns. An **attribute** is some piece of information from an experiment output that can be showed as a column.
-> Example: the execution time could be an **attribute descriptor**.
-> Example: the execution time of an experiment on an instance is an **attribute**.
+### vrp_solution
+The VRP solution parser recognizes the kd_type "vrp_solution". It represents a solution for a Vehicle Routing Problem which is composed of a value and a sequence of routes. A route is a path of vertices, a departing time **t0**, and a duration. The format is the following:
+- kd_type: "vrp_solution",
+- value: number, _// Value of the solution._
+- routes: array(Route) _// Routes of the solution._
 
-## Details View
-The Details View is a dialog that appears if a user clicks on the + icon on the table. It contains more information about the selected experiment execution.
+A Route JSON object has the following format:
+- path: array(number), _// Sequence of vertex indices._
+- t0: number, _// Departing time._
+- duration: number, _// Duration of the path if starting at t0._
+
+**Example:**
+```javascript
+{
+  "kd_type": "vrp_solution",
+  "value": 200,
+  "routes": [
+    {"path":[0,1,2,6], "t0":0.00, "duration":150.00},
+    {"path":[0,4,3,5,6], "t0":14.20, "duration":50.00}
+  ]
+}
+```
+
+## Built With
+- [bootstrap](https://getbootstrap.com)
+- [datatables](https://datatables.net)
+- [jquery](https://jquery.com)
+- [plotly](https://plot.ly)
+- [chosen](https://harvesthq.github.io/chosen/)
+
+## Authors
+Gonzalo Lera-Romero
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details

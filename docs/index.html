@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kaleidoscope</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="lib/datatables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/chosen/chosen.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Kaleidoscope</h1>
+        <div id="settings_container" class="row">
+            <div class="col-md-12">
+                <label class="settings_label" for="dataset">Add experimentation file: </label>
+                <input type="file" id="experiment_file_input" name="files[]" multiple />
+                <span id="loading_experiment_file" class="loading_experiment_file" style="visibility:hidden">(Loading)</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><hr /></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" id="table_view"></div>
+        </div>
+    </div>
 
+    <!-- JS Include Libraries -->
+    <script type="text/javascript" src="lib/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/chosen/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="lib/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="lib/plotly/js/plotly.min.js"></script>
+    <script type="text/javascript" src="lib/zlib/zlib_and_gzip.min.js"></script>
+
+    <!-- JS Include Files -->
+    <script type="text/javascript" src="js/detail_view.js"></script>
+    <script type="text/javascript" src="js/experiment.js"></script>
+    <script type="text/javascript" src="js/grid.js"></script>
+    <script type="text/javascript" src="js/instance.js"></script>
+    <script type="text/javascript" src="js/kaleidoscope.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/plotter.js"></script>
+    <script type="text/javascript" src="js/table_view.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+
+    <!-- JS Include Parsers -->
+    <script type="text/javascript" src="js/parsers/parser.js"></script>
+    <script type="text/javascript" src="js/parsers/bc_parser.js"></script>
+    <script type="text/javascript" src="js/parsers/bcp_parser.js"></script>
+    <script type="text/javascript" src="js/parsers/mlb_parser.js"></script>
+    <script type="text/javascript" src="js/parsers/blb_parser.js"></script>
+    <script type="text/javascript" src="js/parsers/cg_parser.js"></script>
+    <script type="text/javascript" src="js/parsers/lp_parser.js"></script>
+    <script type="text/javascript" src="js/parsers/vrp_solution_parser.js"></script>
+</body>
+</html>

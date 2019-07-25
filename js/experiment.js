@@ -30,6 +30,10 @@ class Experiment
       this.instances.set(instance.id, instance);
       this.output_by_instance.set(instance.id, output);
     }
+
+    // Calculate total execution time.
+    this.time = 0.0;
+    for (var output of this.outputs) this.time += output.time;
   }
 
   has_instance(instance_id)

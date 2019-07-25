@@ -4,7 +4,7 @@ class ExperimentRow
   {
     this.experiment = experiment;
     this.html = $("<div class='attribute_row' />");
-    this.title = $(`<span class='attribute_row_title' title='Experiment file: ${experiment.experiment_file.name}\nDate: ${experiment.experiment_file.date}\nTotal time: ${(experiment.experiment_file.time/3600.0).toFixed(2)}hs.'>${experiment.name}</span>: `);
+    this.title = $(`<span class='attribute_row_title' title='Experiment file: ${experiment.experiment_file.name}\nDate: ${experiment.experiment_file.date}\nTotal time: ${(experiment.time/3600.0).toFixed(2)}hs.'>${experiment.name}</span>: `);
     this.html.append(this.title);
 
     // Get attribute descriptors.

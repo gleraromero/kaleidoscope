@@ -47,7 +47,8 @@ class Parser
     };
   }
 
-  detail_view(obj) {
+  detail_view(obj)
+  {
     var rows = this.detail_view_rows(obj);
     if (rows.length == 0) return undefined;
     var container = $("<div class='container' />");
@@ -59,7 +60,8 @@ class Parser
     return container;
   }
 
-  detail_view_rows(obj) {
+  detail_view_rows(obj)
+  {
     throw "Unimplemented detail_view_rows(obj).";
     return [];
   }
@@ -72,7 +74,7 @@ class Parser
 
   label_row(label, value, formatters=[])
   {
-    if (value == undefined) return undefined; 
+    if (value == undefined) return undefined;
     return `<span class="detail_label">${label}</span>: <span style="padding-right:15px;">${this.apply_formatters(formatters, value)}</span>`;
   }
 
@@ -82,19 +84,53 @@ class Parser
     return this.label_row(label, get_path(obj, path), formatters);
   }
 
-  add_path_row(rows, label, obj, path, formatters=[]) {
+  add_path_row(rows, label, obj, path, formatters=[])
+  {
     if (!has_path(obj, path)) return;
     var formatted_value = get_path(obj, path);
     for (var f of formatters) formatted_value = f(formatted_value);
     rows.push(`<div class='col-md-12'>${this.label_row(label, get_path(obj, path), formatters)}</div>`);
   }
 
-  add_flex_row(rows, cells) {
+  add_flex_row(rows, cells)
+  {
     if (cells.length == 0) return;
     var flex_container = $("<div class='col-md-12 d-flex flex-wrap' />");
     for (var cell of cells) if (cell != undefined) flex_container.append(cell);
     rows.push(flex_container);
     return flex_container;
+  }
+
+  add_table_row(rows, table_columns, table_rows)
+  {
+    // Create table.
+    var table = $("<table class='table table-sm' />");
+
+    // Add header.
+    var header_row = $("<tr />");
+    table.append(header_row);
+    for (var col of table_columns)
+    {
+      var header_col = $("<th />");
+      header_col.append(col);
+      header_row.append(header_col);
+    }
+
+    // Add rows.
+    for (var row of table_rows)
+    {
+      var table_row = $("<tr />");
+      table.append(table_row);
+      for (var cell of row)
+      {
+        var table_cell = $("<td />");
+        if (is_float(cell)) cell = cell.toFixed(2);
+        table_cell.append(cell == undefined ? "-" : cell);
+        table_row.append(table_cell);
+      }
+    }
+
+    this.add_flex_row(rows, [table]);
   }
 
   slider(objects, render_function)

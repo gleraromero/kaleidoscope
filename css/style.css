@@ -92,10 +92,15 @@ h1
     color: #7FA1E3;
 }
 
+.detail_view input[type=text]
+{
+  margin:4px;
+}
+
 .detail_view .detail_label
 {
-    color: #777;
-    font-style: italic;
+    color: #212529;
+    font-weight: bold;
 }
 
 .detail_view .slider_header

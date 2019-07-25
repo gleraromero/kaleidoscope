@@ -55,9 +55,11 @@ class BLBParser extends Parser
     var rows = [];
     // Screen output.
     this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
-    this.add_path_row(rows, "Time", obj, ["time"], [this.f2]);
-    this.add_path_row(rows, "Merge time", obj, ["merge_time"], [this.f2]);
-    this.add_path_row(rows, "Status", obj, ["status"]);
+
+    this.add_table_row(rows,
+      ["Time", "Status"], [
+      [obj.time, obj.status]
+    ]);
 
     var add_bar = (data, title, path) => {
       if (has_path(obj, path)) {

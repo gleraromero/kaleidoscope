@@ -43,31 +43,29 @@ class BCParser extends Parser
   detail_view_rows(obj) {
     var rows = [];
     this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
-    this.add_path_row(rows, "Time", obj, ["time"], [this.f2]);
-    this.add_path_row(rows, "Status", obj, ["status"]);
-    this.add_path_row(rows, "#Constraints", obj, ["constraint_count"]);
-    this.add_path_row(rows, "#Variables", obj, ["variable_count"]);
-    this.add_path_row(rows, "#Nodes open", obj, ["nodes_open"]);
-    this.add_path_row(rows, "#Nodes closed", obj, ["nodes_closed"]);
-    this.add_path_row(rows, "Root LP", obj, ["root_lp_value"], [this.f2]);
-    if (has_path(obj, ["root_lp_value"]) && has_path(obj, ["best_int_value"]))
-      this.add_flex_row(rows, [this.label_row("%Root gap", this.gap(obj.root_lp_value, obj.best_int_value), [this.f2])]);
-    this.add_path_row(rows, "Root Int", obj, ["root_int_value"], [this.f2]);
+    this.add_table_row(rows,
+      ["Time", "Status", "#Constraints", "#Variables", "#Nodes open", "#Nodes closed"], [
+      [obj.time, obj.status, obj.constraint_count, obj.variable_count, obj.nodes_open, obj.nodes_closed]
+    ]);
+    this.add_table_row(rows,
+      ["Root LP", "%Root gap", "Root Int", "Best bound", "Best Int", "%Final gap"], [
+      [obj.root_lp_value, this.gap(obj.root_lp_value, obj.best_int_value), obj.root_int_value, obj.best_bound, obj.best_int_value, this.gap(obj.best_bound, obj.best_int_value)]
+    ]);
     this.add_path_row(rows, "Root Int solution", obj, ["root_int_solution"], [this.jsonify, this.textinput]);
-    this.add_path_row(rows, "Best bound", obj, ["best_bound"], [this.f2]);
-    if (has_path(obj, ["best_bound"]) && has_path(obj, ["best_int_value"]))
-      this.add_flex_row(rows, [this.label_row("%Final gap", this.gap(obj.best_bound, obj.best_int_value), [this.f2])]);
-    this.add_path_row(rows, "Best Int", obj, ["best_int_value"], [this.f2]);
-    this.add_path_row(rows, "Best solution", obj, ["best_int_solution"], [this.jsonify, this.textinput]);
-    this.add_path_row(rows, "Total #Cuts", obj, ["cut_count"]);
-    this.add_path_row(rows, "Total Separation time", obj, ["cut_time"], [this.f2]);
+    this.add_path_row(rows, "Best Int solution", obj, ["best_int_solution"], [this.jsonify, this.textinput]);
+    this.add_table_row(rows,
+      ["Total #Cuts", "Total separation time"], [
+      [obj.cut_count, obj.cut_time]
+    ]);
     if (has_path(obj, ["cut_families"]))
     {
+      var cut_rows = [];
       for (var family of obj.cut_families)
       {
         if (!has_path(family, ["name"])) continue;
-        this.add_flex_row(rows, [this.label_row(family.name, `#Cuts: ${family.cut_count} - #Iterations: ${family.cut_iterations} - Time: ${family.cut_time}`)]);
+        cut_rows.push([family.name, family.cut_count, family.cut_iterations, family.cut_time]);
       }
+      if (cut_rows.length > 0) this.add_table_row(rows, ["Cut family", "#Cuts", "#Iterations", "Separation time"], cut_rows);
     }
     return rows;
   }

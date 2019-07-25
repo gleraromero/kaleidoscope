@@ -17,13 +17,12 @@ class CGParser extends Parser
   detail_view_rows(obj) {
     var rows = [];
     this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
-    this.add_path_row(rows, "Time", obj, ["time"], [this.f2]);
-    this.add_path_row(rows, "Status", obj, ["status"]);
-    this.add_path_row(rows, "Incumbent Value", obj, ["incumbent_value"], [this.f2]);
+
+    this.add_table_row(rows,
+      ["Time", "Status", "Incumbent value", "#Columns added", "Pricing time", "LP time"], [
+      [obj.time, obj.status, obj.incumbent_value, obj.columns_added, obj.pricing_time, obj.lp_time]
+    ]);
     this.add_path_row(rows, "Incumbent", obj, ["incumbent"], [this.jsonify, this.textinput]);
-    this.add_path_row(rows, "#Columns added", obj, ["columns_added"]);
-    this.add_path_row(rows, "Pricing time", obj, ["pricing_time"], [this.f2]);
-    this.add_path_row(rows, "LP time", obj, ["lp_time"], [this.f2]);
     this.add_flex_row(rows, [this.label_row("Iterations",  "")]);
     this.add_flex_row(rows, this.slider(obj.iterations, (index, iteration) => {
       var container = $("<div class='container' />");

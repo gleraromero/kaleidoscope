@@ -38,9 +38,12 @@ class MLBParser extends Parser
     var rows = [];
     // Screen output.
     this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
-    this.add_path_row(rows, "Time", obj, ["time"], [this.f2]);
-    this.add_path_row(rows, "Status", obj, ["status"]);
-    if (has_path(obj, ["count_by_length"])) this.add_flex_row(rows, [`<span class="detail_label">Average Label Length</span>: ${this.pondered_average(obj.count_by_length).toFixed(2)}`]);
+
+    this.add_table_row(rows,
+      ["Time", "Status", "Average label length"], [
+      [obj.time, obj.status, this.pondered_average(obj.count_by_length)]
+    ]);
+    
     var add_bar = (data, title, path) => {
       if (has_path(obj, path)) {
         data.x.push(title);

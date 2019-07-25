@@ -17,13 +17,11 @@ class LPParser extends Parser
   detail_view_rows(obj) {
     var rows = [];
     this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
-    this.add_path_row(rows, "Time", obj, ["time"], [this.f2]);
-    this.add_path_row(rows, "Status", obj, ["status"]);
-    this.add_path_row(rows, "#Iterations", obj, ["simplex_iterations"]);
-    this.add_path_row(rows, "Incumbent Value", obj, ["incumbent_value"], [this.f2]);
-    this.add_path_row(rows, "Incumbent", obj, ["incumbent"], [this.jsonify, this.textinput]);
-    this.add_path_row(rows, "#Variables", obj, ["variable_count"]);
-    this.add_path_row(rows, "#Constraints", obj, ["constraint_count"]);
+
+    this.add_table_row(rows,
+      ["Time", "Status", "#Iterations", "Incumbent value","#Variables", "#Constraints"], [
+      [obj.time, obj.status, obj.simplex_iterations, obj.incumbent_value, obj.variable_count, obj.constraint_count]
+    ]);
     this.add_path_row(rows, "Duals", obj, ["duals"], [this.jsonify, this.textinput]);
     return rows;
   }

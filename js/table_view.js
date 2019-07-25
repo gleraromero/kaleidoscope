@@ -127,6 +127,8 @@ class TableView
 
   parse_experiment_attributes(experiment)
   {
+    this.attribute_descriptors.set(experiment.id, new Map());
+
     // Parse the attributes of the experiment.
     for (var parser of kd.parsers)
     {
@@ -145,7 +147,6 @@ class TableView
             if (attr == undefined) continue;
             var annotated_attr = new AnnotatedAttribute(attr, experiment.id, instance.id, key, parser.type);
             this.attributes.set(annotated_attr.id, annotated_attr);
-            if (!this.attribute_descriptors.has(experiment.id)) this.attribute_descriptors.set(experiment.id, new Map());
             this.attribute_descriptors.get(experiment.id).set(annotated_attr.descriptor().id, annotated_attr.descriptor());
           }
         }
@@ -212,7 +213,7 @@ class TableView
       for (var desc_id of descriptor_ids.get(experiment.id))
       {
         var desc = experiment_row.get_attribute_descriptor(desc_id);
-        grid.addColumn({column_group_id:experiment.id, id:desc.id, text: `<span title="${desc.header_tooltip}">${desc.text}</span>`});
+        grid.addColumn({column_group_id:experiment.id, id:desc.id, text: `<span title="(${desc.key}) ${desc.header_tooltip}">${desc.text}</span>`});
       }
     }
 

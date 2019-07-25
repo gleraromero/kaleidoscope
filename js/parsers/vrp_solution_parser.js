@@ -13,9 +13,11 @@ class VRPSolutionParser extends Parser
   detail_view_rows(obj) {
     var rows = [];
     this.add_path_row(rows, "Value", obj, ["value"], [this.f2]);
-    this.add_flex_row(rows, ["<span class='detail_label'>Routes</span>:"]);
+    this.add_flex_row(rows, [`<span class='detail_label'>Routes (${obj.routes.length})</span>:`]);
+    var route_rows = [];
     for (var route of obj.routes)
-      this.add_flex_row(rows, [`${JSON.stringify(route.path)} - Departure: ${route.t0} - Duration: ${route.duration}`]);
+      route_rows.push([JSON.stringify(route.path), route.t0, route.duration]);
+    if (route_rows.length > 0) this.add_table_row(rows, ["Path", "Departure", "Duration"], route_rows);
     return rows;
   }
 }

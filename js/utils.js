@@ -54,6 +54,12 @@ function get_path(object, path) {
   return obj;
 }
 
+// Returns: if the object is a float.
+function is_float(object)
+{
+  return object != undefined && object.toFixed != undefined && parseInt(object) != object;
+}
+
 // Returns the selected values of a chosen combobox.
 function chosen_selected_values(chosen_select_id)
 {

@@ -23,13 +23,17 @@ class BCPParser extends Parser
   detail_view_rows(obj) {
     var bc_parser = new BCParser();
     var rows = bc_parser.detail_view_rows(obj);
-    this.add_path_row(rows, "#Root constraints", obj, ["root_constraint_count"]);
-    this.add_path_row(rows, "#Root variables", obj, ["root_variable_count"]);
-    this.add_path_row(rows, "#Final constraints", obj, ["final_constraint_count"]);
-    this.add_path_row(rows, "#Final variables", obj, ["final_variable_count"]);
-    this.add_path_row(rows, "LP time", obj, ["lp_time"], [this.f2]);
-    this.add_path_row(rows, "Pricing time", obj, ["lp_time"], [this.f2]);
-    this.add_path_row(rows, "Branching time", obj, ["lp_time"], [this.f2]);
+
+    this.add_table_row(rows,
+      ["#Root constraints", "#Root variables", "#Final constraints", "#Final variables"], [
+      [obj.root_constraint_count, obj.root_variable_count, obj.final_constraint_count, obj.final_variable_count]
+    ]);
+
+    this.add_table_row(rows,
+      ["LP time", "Pricing time", "Branching time"], [
+      [obj.lp_time, obj.pricing_time, obj.branching_time]
+    ]);
+    
     if (has_path(obj, ["root_log", "iterations"]))
     {
       this.add_flex_row(rows, [this.label_row("Root column generation iterations",  "")]);

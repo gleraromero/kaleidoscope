@@ -44,7 +44,7 @@ The experiment files format accepted is the one defined by the [Runner Framework
   - experiment_name: name of the experiment executed.
   - stderr: string of the STDERR log of the execution.
   - stdout: JSON object result from the STDOUT of the execution.
-  - exit_code: the execution exit_code (0 means successful, 6 means **OUTOFMEMORY**).
+  - exit_code: the execution exit_code (0 means successful, -6 means **OUTOFMEMORY**).
 Example:
 ```javascript
 {
@@ -245,12 +245,14 @@ The Monodirectional Labeling parser recognizes the "kd_type" == "mlb". It repres
 - enumerated_count: number _// Number of labels enumerated._
 - extended_count: number _// Number of feasible labels._
 - dominated_count: number _// Number of labels dominated._
+- corrected_count: number _ // Number of labels corrected._
 - processed_count: number _// Number of labels not dominated._
 - count_by_length: array(number) _// count_by_length\[i\] = number of labels of length i processed._
 - queuing_time: number _// Time spent in the push and pop operations of the queue._
 - enumeration_time: number _// Time spent in the enumeration phase._
 - extension_time: number _// Time spent in the extension phase._
 - domination_time: number _// Time spent in the domination phase._
+- correction_time: number _//Time spent in the correction phase._
 - process_time: number _// Time spent in the processing phase._
 - positive_domination_time: number _// Time spent in the domination phase when the result was "DOMINATED"._
 - negative_domination_time: number _// Time spent in the domination phase when the result was "NOT DOMINATED"._

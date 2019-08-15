@@ -16,7 +16,8 @@ class CGParser extends Parser
 
   detail_view_rows(obj) {
     var rows = [];
-    this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
+    if (obj.screen_output && obj.screen_output != "")
+      this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
 
     this.add_table_row(rows,
       ["Time", "Status", "Incumbent value", "#Columns added", "Pricing time", "LP time"], [

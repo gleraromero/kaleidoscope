@@ -21,11 +21,13 @@ class MLBParser extends Parser
       {text:"#Enumerated", extract:this.path_extract(["enumerated_count"])},
       {text:"#Extended", extract:this.path_extract(["extended_count"])},
       {text:"#Dominated", extract:this.path_extract(["dominated_count"])},
+      {text:"#Corrected", extract:this.path_extract(["corrected_count"])},
       {text:"#Processed", extract:this.path_extract(["processed_count"])},
       {text:"Queuing time", extract:this.path_extract(["queuing_time"]), formatters:[this.f2]},
       {text:"Enumeration time", extract:this.path_extract(["enumeration_time"]), formatters:[this.f2]},
       {text:"Extension time", extract:this.path_extract(["extension_time"]), formatters:[this.f2]},
       {text:"Domination time", extract:this.path_extract(["domination_time"]), formatters:[this.f2]},
+      {text:"Correction time", extract:this.path_extract(["domination_time"]), formatters:[this.f2]},
       {text:"Process time", extract:this.path_extract(["process_time"]), formatters:[this.f2]},
       {text:"Positive domination time", extract:this.path_extract(["positive_domination_time"]), formatters:[this.f2]},
       {text:"Negative domination time", extract:this.path_extract(["negative_domination_time"]), formatters:[this.f2]},
@@ -37,7 +39,8 @@ class MLBParser extends Parser
   detail_view_rows(obj) {
     var rows = [];
     // Screen output.
-    this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
+    if (obj.screen_output && obj.screen_output != "")
+      this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
 
     this.add_table_row(rows,
       ["Time", "Status", "Average label length"], [
@@ -56,6 +59,7 @@ class MLBParser extends Parser
     add_bar(data, "Enumerated", ["enumerated_count"]);
     add_bar(data, "Extended", ["extended_count"]);
     add_bar(data, "Dominated", ["dominated_count"]);
+    add_bar(data, "Corrected", ["corrected_count"]);
     add_bar(data, "Processed", ["processed_count"]);
     var labels_plot = bar_plot("#Labels by stage", [data], {height:300, width:350});
     if (labels_plot != undefined) plot_row.push(labels_plot);
@@ -66,6 +70,7 @@ class MLBParser extends Parser
     add_bar(data, "Enumeration", ["enumeration_time"]);
     add_bar(data, "Extension", ["extension_time"]);
     add_bar(data, "Domination", ["domination_time"]);
+    add_bar(data, "Correction", ["correction_time"]);
     add_bar(data, "Processing", ["process_time"]);
     var time_plot = bar_plot("Time by stage", [data], {height:300, width:350});
     if (time_plot != undefined) plot_row.push(time_plot);

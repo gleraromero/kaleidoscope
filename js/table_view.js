@@ -240,7 +240,7 @@ class TableView
             var attr = this.get_attribute(instance.id, desc_id);
             if (attr != undefined) row_value = `<span title="${attr.tooltip}">${attr.value}</span>`;
           }
-          else if (exit_code == 6) // Out of memory.
+          else if (exit_code == -6) // Out of memory.
           {
             row_value = "<span title='Out of memory'>MLim</span>";
           }

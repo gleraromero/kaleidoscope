@@ -41,6 +41,7 @@ class BCPParser extends Parser
         var container = $("<div class='container' />");
         var iteration_name = iteration.iteration_name != undefined ? iteration.iteration_name : "";
         container.append($(`<div class='row'><div class='col-md-12'><span class="slider_header">#${index+1} ${iteration_name}</span></div></div>`));
+        this.add_path_row(rows, "Pricing problem", iteration, ["pricing_problem"], [this.jsonify, this.textinput]);
         var iteration_parser = kd.get_parser(iteration.kd_type);
         if (iteration_parser != undefined) container.append(iteration_parser.detail_view(iteration));
         return container

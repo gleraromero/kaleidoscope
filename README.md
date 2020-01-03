@@ -190,6 +190,7 @@ The Column Generation parser recognizes the "kd_type" == "cg". It represents the
 ### bcp
 The Branch and Cut and Price parser recognizes the "kd_type" == "bcp". It represents the execution of a Branch and Cut and Price solver. This log type is an extension of the **bc** log type, so it contains all its attributes and also the following:
 - kd_type: "bcp"
+- root_time: number _// Time spent solving the root node._
 - root_log: json _// Object of kd_type **cg** with the column generation information of the root node._
 - root_constraint_count: number _// Number of consatraints after closing the root node._
 - root_variable_count: number _// Number of variables after closing the root node._
@@ -210,6 +211,7 @@ The Branch and Cut and Price parser recognizes the "kd_type" == "bcp". It repres
   "variable_count": 250,
   "nodes_open": 1200,
   "nodes_closed": 200050,
+  "root_time": 3230.30,
   "root_lp_value": 123.456,
   "root_log": {
     "kd_type": "cg",

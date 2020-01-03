@@ -19,6 +19,7 @@
           "variable_count": 250,
           "nodes_open": 1200,
           "nodes_closed": 200050,
+          "root_time": 3230.30,
           "root_lp_value": 123.456,
           "root_log": {
             "kd_type": "cg",

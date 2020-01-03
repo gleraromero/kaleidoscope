@@ -9,6 +9,7 @@ class BCPParser extends Parser
     for (var attr of bc_parser.get_attributes(obj)) A.push(attr);
 
     A.push(...this.parse_attributes(obj, [
+      {text:"Root time", extract:this.path_extract(["root_time"]), formatters:[this.f2]},
       {text:"#Root constraints", extract:this.path_extract(["root_constraint_count"])},
       {text:"#Root variables", extract:this.path_extract(["root_variable_count"])},
       {text:"#Final constraints", extract:this.path_extract(["final_constraint_count"])},
@@ -30,8 +31,8 @@ class BCPParser extends Parser
     ]);
 
     this.add_table_row(rows,
-      ["LP time", "Pricing time", "Branching time"], [
-      [obj.lp_time, obj.pricing_time, obj.branching_time]
+      ["Root time", "LP time", "Pricing time", "Branching time"], [
+      [obj.root_time, obj.lp_time, obj.pricing_time, obj.branching_time]
     ]);
     
     if (has_path(obj, ["root_log", "iterations"]))

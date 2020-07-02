@@ -173,12 +173,16 @@ class TableView
   update_experiments(e, actions)
   {
     if (actions.selected)
-      for (var opt_id of actions.selected)
-        this.experiment_rows.get(parseInt(opt_id)).append_to(this.attribute_cell);
+    {
+      var opt_id = actions.selected
+      this.experiment_rows.get(parseInt(opt_id)).append_to(this.attribute_cell);
+    }
 
     if (actions.deselected)
-      for (var opt_id of actions.deselected)
-        this.experiment_rows.get(parseInt(opt_id)).remove();
+    {
+      var opt_id = actions.deselected;
+      this.experiment_rows.get(parseInt(opt_id)).remove();
+    }
   }
 
   get_attribute(instance_id, desc_id)

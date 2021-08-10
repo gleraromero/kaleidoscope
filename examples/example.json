@@ -1,0 +1,26 @@
+{
+  "date":"15-07-2019",
+  "experiment_file": "Example parser",
+  "time":2580.253,
+  "outputs":[
+    {
+      "dataset_name": "K-means",
+      "instance_name": "Instance1",
+      "experiment_name": "Heuristic",
+      "exit_code": 0,
+      "stderr": "Some execution log\nAnother line of the execution log",
+      "stdout": {
+        "model1": {
+          "kd_type": "example",
+          "initial_solution": { "x": 50, "y": 25 },
+          "iterations": [
+            {"solution": { "x": 50, "y": 25}, "time": 25},
+            {"solution": { "x": 40, "y": 30}, "time": 50}
+          ],
+          "status": "Finished",
+          "total_time": 1000.123
+        }
+      }
+    }
+  ]
+}

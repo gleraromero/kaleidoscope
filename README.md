@@ -338,6 +338,13 @@ A Route JSON object has the following format:
 }
 ```
 
+## Adding a new parser
+- Copy the `js/parsers/example_parser.js` file into `js/parsers/<name>_parser.js`
+- Modify the name of the class
+- Modify the end line `kd.add_parser("<your_kd_type>", new YourParserClass());`
+- Modify the file `index.html` at the root directory and add at the end of the file:
+  - `<script type="text/javascript" src="js/parsers/<name>_parser.js"></script>`
+
 ## Built With
 - [bootstrap](https://getbootstrap.com)
 - [datatables](https://datatables.net)

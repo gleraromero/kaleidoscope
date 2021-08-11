@@ -2,23 +2,23 @@ class VRPSolutionParser extends Parser
 {
   get_attributes(obj)
   {
-    var A = [];
-    A.push(...this.parse_attributes(obj, [
-      {text:"Value", extract:this.path_extract(["value"]), formatters:[this.f2]},
-      {text:"#Routes", extract:this.path_extract(["routes", "length"])}
-    ]));
-    return A;
+    return [
+      new Attribute("Value", this.f2(obj.value)),
+      new Attribute("#Routes", obj.routes?.length),
+    ];
   }
 
-  detail_view_rows(obj) {
-    var rows = [];
-    this.add_path_row(rows, "Value", obj, ["value"], [this.f2]);
-    this.add_flex_row(rows, [`<span class='detail_label'>Routes (${obj.routes.length})</span>:`]);
-    var route_rows = [];
-    for (var route of obj.routes)
-      route_rows.push([JSON.stringify(route.path), route.t0, route.duration]);
-    if (route_rows.length > 0) this.add_table_row(rows, ["Path", "Departure", "Duration"], route_rows);
-    return rows;
+  detail_view_rows(obj, view_section) {
+    view_section.add_label_row("Value", this.f2(obj.value));
+    view_section.add_label_row(`Routes (${obj.routes?.length})`, " ");
+    const route_rows = [];
+    for (const route of obj.routes) {
+      route_rows.push([this.jsonify(route.path), this.f2(route.t0), this.f2(route.duration)]);
+    }
+    view_section.add_table_row(
+      ["Path", "Departure", "Duration"],
+      ...route_rows,
+    );
   }
 }
 kd.add_parser("vrp_solution", new VRPSolutionParser());

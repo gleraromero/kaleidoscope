@@ -18,13 +18,16 @@
           "enumerated_count": 120000,
           "extended_count": 50000,
           "dominated_count": 40000,
+          "corrected_count": 10,
           "processed_count": 10000,
           "count_by_length": [1, 20, 50, 30, 5],
           "queuing_time": 10.123,
           "enumeration_time": 20.123,
           "extension_time": 30.123,
           "domination_time": 40.123,
+          "correction_time": 52.455,
           "process_time": 50.123,
+          "bounding_time": 72.455,
           "positive_domination_time": 10.123,
           "negative_domination_time": 30.000
         }

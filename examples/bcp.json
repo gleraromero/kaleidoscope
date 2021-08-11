@@ -26,6 +26,7 @@
             "iterations": [
               {
                 "kd_type": "mlb",
+                "pricing_problem": "Problem 1",
                 "iteration_name": "Heuristic",
                 "time": 250.1234,
                 "status": "Optimum",

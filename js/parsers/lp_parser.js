@@ -2,29 +2,26 @@ class LPParser extends Parser
 {
   get_attributes(obj)
   {
-    var A = [];
-    A.push(...this.parse_attributes(obj, [
-      {text:"Time", extract:this.path_extract(["time"]), formatters:[this.f2]},
-      {text:"Status", extract:this.path_extract(["status"])},
-      {text:"#Iterations", extract:this.path_extract(["simplex_iterations"])},
-      {text:"Incumbent", extract:this.path_extract(["incumbent_value"]), formatters:[this.f2]},
-      {text:"#Variables", extract:this.path_extract(["variable_count"])},
-      {text:"#Constraints", extract:this.path_extract(["constraint_count"])}
-    ]));
-    return A;
+    return [
+      new Attribute("Time", this.f2(obj.time)),
+      new Attribute("Status", obj.status),
+      new Attribute("#Iterations", obj.simplex_iterations),
+      new Attribute("Incumbent", this.f2(obj.incumbent_value)),
+      new Attribute("#Variables", obj.variable_count),
+      new Attribute("#Constraints", obj.constraint_count),
+    ];
   }
 
-  detail_view_rows(obj) {
-    var rows = [];
-    if (obj.screen_output && obj.screen_output != "")
-      this.add_path_row(rows, "Screen output", obj, ["screen_output"], [this.textarea]);
+  detail_view_rows(obj, view_section) {
+    if (obj.screen_output && obj.screen_output != "") {
+      view_section.add_label_row("Screen output", this.textarea(obj.screen_output));
+    }
 
-    this.add_table_row(rows,
-      ["Time", "Status", "#Iterations", "Incumbent value","#Variables", "#Constraints"], [
+    view_section.add_table_row(
+      ["Time", "Status", "#Iterations", "Incumbent value","#Variables", "#Constraints"],
       [obj.time, obj.status, obj.simplex_iterations, obj.incumbent_value, obj.variable_count, obj.constraint_count]
-    ]);
-    this.add_path_row(rows, "Duals", obj, ["duals"], [this.jsonify, this.textinput]);
-    return rows;
+    );
+    view_section.add_label_row("Duals", this.textinput(this.jsonify(obj.duals)));
   }
 }
 kd.add_parser("lp", new LPParser());
